@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComplaintRegistration"
+    android:background="@drawable/pinterest">
+
+    <Button
+        android:id="@+id/filecomplaint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="98dp"
+        android:layout_y="119dp"
+        android:width="200dp"
+        android:text="File a Complaint"
+        android:textSize="25sp"
+        android:textStyle="italic|bold" />
+
+    <Button
+        android:id="@+id/complaintstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="98dp"
+        android:layout_y="238dp"
+        android:width="200dp"
+        android:text="Complaint Status"
+        android:textSize="25sp"
+        android:textStyle="italic|bold" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="98dp"
+        android:layout_y="352dp"
+        android:width="200dp"
+        android:text="Logout"
+        android:textSize="25sp"
+        android:textStyle="italic|bold" />
+</AbsoluteLayout>
