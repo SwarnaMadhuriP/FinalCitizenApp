@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,14 +17,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.content.Context;
 import android.database.Cursor;
+
+import java.io.ByteArrayOutputStream;
+
 public class ImagePage extends AppCompatActivity {
     ImageView photo;
     Button upload,filecomplaint;
     SQLiteDatabase db;
-    String icomplainttype,iconvictname,ivictimname,imobileno,iplace,idate,itime,icomplaintname;
+   String icomplainttype,iconvictname,ivictimname,imobileno,iplace,idate,itime,icomplaintname;
     private static final int IMAGE_PICK_CODE=1000;
     private static final int PERMISSION_CODE=1001;
-    String getAlphaNumericString(int n)
+  String getAlphaNumericString(int n)
     {
 
         // chose a Character random from this String
@@ -54,8 +59,9 @@ public class ImagePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_page);
-        photo=(ImageView)findViewById(R.id.photo);
+      //  photo=(ImageView)findViewById(R.id.photo);
         upload=(Button)findViewById(R.id.upload);
+        filecomplaint=(Button)findViewById(R.id.file22);
         db = openOrCreateDatabase("ComplaintDB.db", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS  CaseRegistration(Id VARCHAR,Status VARCHAR,Type1 VARCHAR,VName VARCHAR,CName VARCHAR,Complaintname VARCHAR,Mobile VARCHAR,Place VARCHAR,Date1 VARCHAR,Time1 VARCHAR);");
         filecomplaint.setOnClickListener(new View.OnClickListener() {
@@ -64,10 +70,12 @@ public class ImagePage extends AppCompatActivity {
             String status="ComplaintRecorded";
             @Override
             public void onClick(View v) {
+                showMessage("Succesfully registered","Case Details");
                 Idgenerated=getAlphaNumericString(k);
+             //   ImageViewtoByte(photo);
                 Intent i = getIntent();
                 //Getting the Values from First Activity using the Intent received
-                icomplainttype=i.getStringExtra(" complainttype");
+                icomplainttype=i.getStringExtra("complainttype");
                 iconvictname=i.getStringExtra("convictname");
                 ivictimname=i.getStringExtra("victimname");
                 imobileno=i.getStringExtra("MobileNo");
@@ -75,7 +83,7 @@ public class ImagePage extends AppCompatActivity {
                 iplace=i.getStringExtra("place");
                 idate=i.getStringExtra("Date");
                 itime=i.getStringExtra("time");
-                db.execSQL("INSERT INTO CaseRegistration VALUES('" + Idgenerated + "','"+status+"','" +icomplainttype+"','"+ivictimname+"','"+iconvictname+"','"+icomplaintname+"','"+imobileno+"','"+iplace+"','"+idate+"','"+itime + "');");
+               db.execSQL("INSERT INTO CaseRegistration VALUES('" + Idgenerated + "','"+status+"','" +icomplainttype+"','"+ivictimname+"','"+iconvictname+"','"+icomplaintname+"','"+imobileno+"','"+iplace+"','"+idate+"','"+itime + "');");
                 Cursor c=db.rawQuery("SELECT * FROM  CaseRegistration", null);
                 if(c.getCount()==0)
                 {
@@ -83,7 +91,7 @@ public class ImagePage extends AppCompatActivity {
                     return;
                 }
                 StringBuffer buffer=new StringBuffer();
-                while(c.moveToNext())
+                 while(c.moveToNext())
                 {
                     buffer.append("ComplaintId: "+c.getString(0)+"\n");
                     buffer.append("ComplaintStatus: "+c.getString(1)+"\n");
@@ -97,11 +105,11 @@ public class ImagePage extends AppCompatActivity {
                     buffer.append("Time: "+c.getString(9)+"\n\n");
                 }
                 showMessage("Success", "Registration Successful");
-                showMessage("Complaint Details are :", buffer.toString());
+          //      showMessage("Complaint Details are :", buffer.toString());
                 //clearText();
 
 
-            }
+           }
         });
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +161,13 @@ public class ImagePage extends AppCompatActivity {
             photo.setImageURI(data.getData());
         }
     }
+  //  private  byte[] ImageViewtoByte(ImageView image){
+    //    Bitmap bitmap=((BitmapDrawable)image.getDrawable()).getBitmap();
+      //  ByteArrayOutputStream stream=new ByteArrayOutputStream();
+        //bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        //byte[] byteArray=stream.toByteArray();
+        //return  byteArray;
+  //  }
     public void showMessage(String title,String message)
     {
         AlertDialog.Builder builder=new AlertDialog.Builder(this);

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ComplaintStatus"
     android:background="@drawable/pinterest">
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -28,7 +27,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/complaintid"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_x="217dp"
@@ -37,7 +36,7 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/checkstatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="131dp"

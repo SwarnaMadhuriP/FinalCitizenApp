@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(startcitizen);
             }
         });
+        admin1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startadmin=new Intent(MainActivity.this, LoginAdminActivity.class);
+                startActivity(startadmin);
+            }
+        });
 
 
 
