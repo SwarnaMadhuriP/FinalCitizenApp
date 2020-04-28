@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginAdminActivity"
+    tools:ignore="Deprecated">
+
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_x="16dp"
+        android:layout_y="194dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Name"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="78dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_x="12dp"
+        android:layout_y="311dp"
+        android:inputType="textPassword"
+        android:text="Enter Password"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_x="11dp"
+        android:layout_y="428dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="454dp" />
+
+</AbsoluteLayout>

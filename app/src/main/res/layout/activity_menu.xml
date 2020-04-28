@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    tools:context=".MenuActivity"
+    tools:ignore="Deprecated">
+
+    <Button
+        android:id="@+id/assigncase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="44dp"
+        android:width="300dp"
+        android:text="Assign Case"
+        android:textSize="25sp"
+        android:textStyle="italic|bold"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/addadmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="172dp"
+        android:width="300dp"
+        android:text=" Add Admin"
+        android:textSize="25sp"
+        android:textStyle="italic|bold"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/adddetective"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="294dp"
+        android:width="300dp"
+        android:text="Add Detective"
+        android:textSize="25sp"
+        android:textStyle="italic|bold"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/detective_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="420dp"
+        android:width="300dp"
+        android:text="Detective Details"
+        android:textSize="25sp"
+        android:textStyle="italic|bold"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/case_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="25dp"
+        android:layout_y="549dp"
+        android:width="300dp"
+        android:text="Case Details"
+        android:textSize="25sp"
+        android:textStyle="italic|bold"
+        tools:ignore="MissingConstraints" />
+
+
+</AbsoluteLayout>
