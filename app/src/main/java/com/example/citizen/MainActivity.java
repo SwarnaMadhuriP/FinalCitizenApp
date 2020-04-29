@@ -14,9 +14,19 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity{
     Button citizen1,admin1,detective1;
+    SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //database and tables
+
+        db=openOrCreateDatabase("ComplaintRegistrationDB.db", Context.MODE_PRIVATE, null);
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS detective(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,password VARCHAR,firstname VARCHAR,lastname VARCHAR,address VARCHAR,phonenumber INT,email VARCHAR,dateOfJoin date,caseAssigned INT,caseClosed INT,branchDetails VARCHAR);");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS  CaseRegistration(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,caseId VARCHAR,Status VARCHAR,Type1 VARCHAR,VName VARCHAR,CName VARCHAR,Complaintname VARCHAR,Mobile VARCHAR,Place VARCHAR,Date1 VARCHAR,Time1 VARCHAR,assigned INT);");
+
+
         setContentView(R.layout.activity_main);
         citizen1=(Button)findViewById(R.id.citizen);
         admin1=(Button)findViewById(R.id.admin);
