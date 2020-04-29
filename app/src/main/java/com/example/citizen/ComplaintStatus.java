@@ -22,7 +22,7 @@ public class ComplaintStatus extends AppCompatActivity  {
         setContentView(R.layout.activity_complaint_status);
         complaintid=(EditText)findViewById(R.id.complaintid);
         checkstatus=(Button)findViewById(R.id.checkstatus);
-        db=openOrCreateDatabase("ComplaintDB.db", Context.MODE_PRIVATE, null);
+        db=openOrCreateDatabase("ComplaintRegistrationDB.db", Context.MODE_PRIVATE, null);
         //db.execSQL("CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);");
         checkstatus.setOnClickListener(new OnClickListener() {
             @Override
