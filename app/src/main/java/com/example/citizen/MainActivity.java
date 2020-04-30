@@ -45,7 +45,13 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(startadmin);
             }
         });
-
+        detective1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startadmin=new Intent(MainActivity.this, DetectiveLogin.class);
+                startActivity(startadmin);
+            }
+        });
 
 
     }
