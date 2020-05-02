@@ -7,22 +7,34 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+import java.text.ParseException;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FailComplaint extends Activity implements android.view.View.OnClickListener{
-    Button file,next;
+    Object icomplainttype;
+    Editable iconvictname;
+    Editable ivictimname;
+    Editable imobileno;
+    Editable iplace;
+    Editable idate;
+    Editable itime;
+    Editable icomplaintname;
     EditText complaintname,victimname,convictname,mobileno,place,date,time;
+    Button  register;
     SQLiteDatabase db;
-    String complainttypei,victimnamei,convictnamei,mobilenoi,complaintnamei,placei,datei,timei;
     Spinner s;
-
     String [] complaint_type={"roberry/Theft","Kidnap","Murder"};
-
-    /* String getAlphaNumericString(int n)
+    String getAlphaNumericString(int n)
     {
 
         // chose a Character random from this String
@@ -45,45 +57,53 @@ public class FailComplaint extends Activity implements android.view.View.OnClick
             sb.append(AlphaNumericString
                     .charAt(index));
         }
-
         return sb.toString();
-    }*/
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fail_complaint);
-        next=(Button)findViewById(R.id.next);
+        complaintname=(EditText)findViewById(R.id.complaintname);
+        register=(Button)findViewById(R.id.registercomplaint);
         convictname=(EditText)findViewById(R.id.convictname2);
         victimname=(EditText)findViewById(R.id.victimname2);
         mobileno=(EditText)findViewById(R.id.mobileno2);
         place=(EditText)findViewById(R.id.place2);
         date=(EditText)findViewById(R.id.date2);
         time=(EditText)findViewById(R.id.time2);
-        complaintname=(EditText)findViewById(R.id.complaintname);
         s= (Spinner) findViewById(R.id.spinner);
         ArrayAdapter adapter= new ArrayAdapter(FailComplaint.this,android.R.layout.simple_spinner_item,complaint_type);
         s.setAdapter(adapter);
-       // db = openOrCreateDatabase("RegistrationDB1", Context.MODE_PRIVATE, null);
-        //db.execSQL("CREATE TABLE IF NOT EXISTS cregistration(Name VARCHAR,Id VARCHAR);");
-       // file.setOnClickListener(this);
-        next.setOnClickListener(this);
-
-
+        db = openOrCreateDatabase("ComplaintRegistrationDB", Context.MODE_PRIVATE, null);
+        register.setOnClickListener(this);
     }
     public void onClick(View view) {
-// Inserting a record to the Student table
-      //  String Id;
-        //int k=6;
-        if(view==next){
-            if (complaintname.getText().toString().trim().length() == 0||convictname.getText().toString().trim().length()==0||victimname.getText().toString().trim().length()==0||
+// Inserting a record to the case table
+        String Idgenerated;
+        int k=6;
+        String status="ComplaintRecorded";
+        if(view==register){
+            Idgenerated=getAlphaNumericString(k);
+           /* by swarna if (complaintname.getText().toString().trim().length() == 0||convictname.getText().toString().trim().length()==0||victimname.getText().toString().trim().length()==0||
             mobileno.getText().toString().trim().length()==0||place.getText().toString().trim().length()==0||date.getText().toString().trim().length()==0
             ||time.getText().toString().trim().length()==0) {
                 showMessage("Error", "Please enter all values");
                 return;
+            }*/
+            if(!checkDataEntered()){
+                showMessage("Error", "Please enter all values");
+                return;
             }
-            /* Id=getAlphaNumericString(k);
-            db.execSQL("INSERT INTO cregistration VALUES('" + complaintname.getText() + "','" + Id  + "');");
-            Cursor c=db.rawQuery("SELECT * FROM  cregistration", null);
+            icomplainttype=s.getSelectedItem();
+            ivictimname=victimname.getText();
+            iconvictname=convictname.getText();
+            icomplaintname=complaintname.getText();
+            imobileno=mobileno.getText();
+            iplace=place.getText();
+            idate=date.getText();
+            itime=time.getText();
+            db.execSQL("INSERT INTO CaseRegistration (Status,Type1,VName,CName,Complaintname,Mobile,Place,Date1,Time1,assigned) VALUES('" +status+"','" +icomplainttype+"','"+ivictimname+"','"+iconvictname+"','"+icomplaintname+"','"+imobileno+"','"+iplace+"','"+idate+"','"+itime + "',0);");
+            Cursor c = db.rawQuery("SELECT ID,assigned FROM CaseRegistration WHERE Mobile='" +mobileno.getText()+ "'", null);
             if(c.getCount()==0)
             {
                 showMessage("Error", "No records found");
@@ -92,31 +112,47 @@ public class FailComplaint extends Activity implements android.view.View.OnClick
             StringBuffer buffer=new StringBuffer();
             while(c.moveToNext())
             {
-                buffer.append("ComplaintName: "+c.getString(0)+"\n");
-                buffer.append("ComplaintId: "+c.getString(1)+"\n\n");
+                buffer.append("ComplaintId: "+c.getString(0)+"\n");
+                buffer.append("Assigned: "+c.getString(1)+"\n\n");
             }
             showMessage("Success", "Registration Successful");
-            showMessage("Registration Details", buffer.toString());
-            clearText();*/
-            complainttypei=s.getSelectedItem().toString();
-            convictnamei=convictname.getText().toString();
-            victimnamei=victimname.getText().toString();
-            complaintnamei=complaintname.getText().toString();
-            mobilenoi=mobileno.getText().toString();
-            placei=place.getText().toString();
-            datei=date.getText().toString();
-            timei=time.getText().toString();
-            Intent i=new Intent(FailComplaint.this,ImagePage.class);
-            i.putExtra("complainttype",complainttypei);
-            i.putExtra("convictname",convictnamei);
-            i.putExtra("complaintname",complaintnamei);
-            i.putExtra("victimname",victimnamei);
-            i.putExtra("MobileNo",mobilenoi);
-            i.putExtra("place",placei);
-            i.putExtra("Date",datei);
-            i.putExtra("time",timei);
-            startActivity(i);
+            showMessage("Complaint Details are :", buffer.toString());
+            clearText();
+
         }
+    }
+    boolean isEmpty(EditText text) {
+        CharSequence str = text.getText().toString();
+        return TextUtils.isEmpty(str);
+    }
+    boolean checkDataEntered() {
+        boolean valid=true;
+        if (isEmpty(complaintname)) {
+            complaintname.setError("Complaint name is required!!");
+            valid=false;
+        }
+        if (isEmpty(victimname)) {
+            Toast t = Toast.makeText(this, "You must enter victim name to file a complaint!", Toast.LENGTH_SHORT);
+            t.show();
+            valid=false;
+        }
+        if (isEmpty(convictname)) {
+            convictname.setError("Convict name is required!!If not known specify as unknown");
+            valid=false;
+        }
+        if (isEmpty(place)) {
+            place.setError("place of incident is required!!");
+            valid=false;
+        }
+        if (isEmpty(mobileno)) {
+            mobileno.setError("Mobile Number is required!");
+            valid=false;
+        }
+        if(mobileno.getText().toString().length() !=10){
+            mobileno.setError("Invalid Phone number");
+            valid=false;
+        }
+        return valid;
     }
 
     public void showMessage(String title,String message)
@@ -127,10 +163,15 @@ public class FailComplaint extends Activity implements android.view.View.OnClick
         builder.setMessage(message);
         builder.show();
     }
-   /* public void clearText()
+    public void clearText()
     {
         complaintname.setText("");
+        convictname.setText("");
+        victimname.setText("");
+        mobileno.setText("");
+        place.setText("");
+        date.setText("");
+        time.setText("");
         complaintname.requestFocus();
-    }*/
+    }
 }
-
