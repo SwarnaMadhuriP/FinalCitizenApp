@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
-    Button detective_add;
+    Button detective_add,case_details;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,7 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         detective_add=(Button)findViewById(R.id.addDetective);
+        case_details=(Button)findViewById(R.id.caseDetails);
 
         detective_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,5 +25,13 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(registration);
             }
         });
+        case_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent icasedetails=new Intent(MenuActivity.this,CaseDetails.class);
+                startActivity(icasedetails);
+            }
+        });
+
     }
 }
