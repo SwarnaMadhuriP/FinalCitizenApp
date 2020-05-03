@@ -22,10 +22,10 @@ public class DetectiveLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_admin);
+        setContentView(R.layout.activity_detective_login);
 
-        setupUI();
-        setupListeners();
+        this.setupUI();
+        this.setupListeners();
 
     }
 
@@ -50,53 +50,52 @@ public class DetectiveLogin extends AppCompatActivity {
         if (isEmpty(username)) {
             username.setError("You must enter username to login!");
             isValid = false;
-        } else {
-            if (!isEmail(username)) {
-                username.setError("Enter valid email!");
-                isValid = false;
-            }
         }
+
 
         if (isEmpty(password)) {
             password.setError("You must enter password to login!");
             isValid = false;
-        } else {
-            if (password.getText().toString().length() < 4) {
-                password.setError("Password must be at least 4 chars long!");
-                isValid = false;
-            }
         }
+        if (password.getText().toString().length() < 4) {
+            password.setError("Password must be at least 4 chars long!");
+            isValid = false;
+        }
+
 
         //check email and password
         //IMPORTANT: here should be call to backend or safer function for local check; For example simple check is cool
         //For example simple check is cool
         if (isValid) {
-            rdb = openOrCreateDatabase("ComplaintRegistrationDB.db", Context.MODE_PRIVATE, null);
-            int a=Integer.parseInt(username.getText().toString());
-            Cursor c = rdb.rawQuery("SELECT * FROM detective WHERE Id='"+username.getText()+"'", null);
+            rdb = openOrCreateDatabase("rachanadb", Context.MODE_PRIVATE, null);
+            int a = Integer.parseInt(username.getText().toString());
+            Cursor c = rdb.rawQuery("SELECT ID,password FROM detective WHERE ID='" + username.getText() + "'", null);
             if (c.getCount() == 0) {
                 showMessage("Error", "Detective Not found :(:( please contact admin");
                 clearTextuser();
                 return;
-            } else {
-                String passwordValue = password.getText().toString();
-                if ( passwordValue.equals(c.getString(2))) {
-                    //everything checked we open new activity
-                    Intent i = new Intent(DetectiveLogin.this, DetectiveActivity.class);
-                    startActivity(i);
-                    //we close this activity
-                    this.finish();
-                } else {
-                    Toast t = Toast.makeText(this, "Wrong id or password!", Toast.LENGTH_SHORT);
-                    t.show();
-                }
             }
+
+            else{
+                //showMessage("found","login successfull");
+                c.moveToFirst();
+                String pass=password.getText().toString();
+                String fetch=c.getString(1);
+                if(pass.equals(fetch)){
+                    Intent det=new Intent(DetectiveLogin.this,DetectiveActivity.class);
+                    det.putExtra("id",username.getText().toString());
+                    startActivity(det);
+                }
+                else{
+                        showMessage("unsuccessful login","wrong password");
+                        return;
+                }
+
+            }
+
         }
     }
-    boolean isEmail(EditText text) {
-        CharSequence email = text.getText().toString();
-        return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-    }
+
 
     boolean isEmpty(EditText text) {
         CharSequence str = text.getText().toString();
