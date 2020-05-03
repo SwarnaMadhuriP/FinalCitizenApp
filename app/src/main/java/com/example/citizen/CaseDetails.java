@@ -17,7 +17,7 @@ public class CaseDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case_details);
-        db=openOrCreateDatabase("ComplaintRegistrationDB", Context.MODE_PRIVATE, null);
+        db=openOrCreateDatabase("NewDatabase", Context.MODE_PRIVATE, null);
         layout=findViewById(R.id.linearlayoutid);
   //    db.execSQL("CREATE TABLE IF NOT EXISTS  CaseRegistration(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,caseId VARCHAR,Status VARCHAR,Type1 VARCHAR,VName VARCHAR,CName VARCHAR,Complaintname VARCHAR,Mobile VARCHAR,Place VARCHAR,Date1 VARCHAR,Time1 VARCHAR,assigned INT);");
     //  db.execSQL("INSERT INTO CaseRegistration (Status,Type1,VName,CName,Complaintname,Mobile,Place,Date1,Time1,assigned) VALUES('" +"recorded"+"','" +"robbery"+"','"+"mukesh"+"','"+"swarna"+"','"+"car robbed"+"','"+"8105504284"+"','"+"delhi"+"','"+"1/05/2020"+"','"+"14" + "',0);");

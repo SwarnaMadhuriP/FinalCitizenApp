@@ -35,7 +35,7 @@ public class eachcasedetails extends AppCompatActivity {
         Intent  icaseid=getIntent();
         final String f=icaseid.getStringExtra("case_id");
         String s=f;
-        db=openOrCreateDatabase("ComplaintRegistrationDB", Context.MODE_PRIVATE, null);
+        db=openOrCreateDatabase("NewDatabase", Context.MODE_PRIVATE, null);
         Cursor c = db.rawQuery("SELECT * FROM CaseRegistration WHERE  ID='"+s+"'", null);
         if(c.getCount()==0)
         {

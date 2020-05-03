@@ -73,7 +73,7 @@ public class FailComplaint extends Activity implements android.view.View.OnClick
         s= (Spinner) findViewById(R.id.spinner);
         ArrayAdapter adapter= new ArrayAdapter(FailComplaint.this,android.R.layout.simple_spinner_item,complaint_type);
         s.setAdapter(adapter);
-        db = openOrCreateDatabase("ComplaintRegistrationDB", Context.MODE_PRIVATE, null);
+        db = openOrCreateDatabase("NewDatabase", Context.MODE_PRIVATE, null);
         register.setOnClickListener(this);
     }
     public void onClick(View view) {
