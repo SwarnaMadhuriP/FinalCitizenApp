@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity{
         db.execSQL("CREATE TABLE IF NOT EXISTS  CaseRegistration(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,caseId VARCHAR,Status VARCHAR,Type1 VARCHAR,VName VARCHAR,CName VARCHAR,Complaintname VARCHAR,Mobile VARCHAR,Place VARCHAR,Date1 VARCHAR,Time1 VARCHAR,assigned INT);");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS Admin(email VARCHAR,password VARCHAR);");
+        db.execSQL("INSERT INTO Admin(email,password) VALUES('" +"admin@admin.com"+"','" +"12345"+"');");
         setContentView(R.layout.activity_main);
         citizen1=(Button)findViewById(R.id.citizen);
         admin1=(Button)findViewById(R.id.admin);

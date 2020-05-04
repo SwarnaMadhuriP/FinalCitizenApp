@@ -37,7 +37,7 @@ public class CaseDetails extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
-            params.setMargins(300, 30, 30, 30);
+            params.setMargins(200, 30, 30, 30);
             button.setLayoutParams(params);
             //  params.setMargins(left, top, right, bottom);
             // button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
