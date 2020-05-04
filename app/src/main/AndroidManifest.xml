@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AddAdmin"></activity>
+        <activity android:name=".eachcasedetails" />
+        <activity android:name=".CaseDetails" />
+
         <activity android:name=".DetectiveDetailsActivity"></activity>
         <activity android:name=".DetailsActivity" />
         <activity android:name=".DetectiveActivity" />
