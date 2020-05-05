@@ -22,7 +22,8 @@ public class ComplaintStatus extends AppCompatActivity  {
         setContentView(R.layout.activity_complaint_status);
         complaintid=(EditText)findViewById(R.id.complaintid);
         checkstatus=(Button)findViewById(R.id.checkstatus);
-        db=openOrCreateDatabase("ComplaintRegistrationDB.db", Context.MODE_PRIVATE, null);
+        db=openOrCreateDatabase("NewDatabase", Context.MODE_PRIVATE, null);
+        db=openOrCreateDatabase("rachanadb", Context.MODE_PRIVATE, null);
         //db.execSQL("CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);");
         checkstatus.setOnClickListener(new OnClickListener() {
             @Override
@@ -38,7 +39,7 @@ public class ComplaintStatus extends AppCompatActivity  {
                 }
                 StringBuffer buffer = new StringBuffer();
                 while (c.moveToNext()) {
-                    buffer.append("Complaint Status is : " + c.getString(1) + "\n\n");
+                    buffer.append("Complaint Status is : " + c.getString(2) + "\n\n");
                    // buffer.append("Name: " + c.getString(1) + "\n");
                     //buffer.append("Marks: " + c.getString(2) + "\n\n");
 

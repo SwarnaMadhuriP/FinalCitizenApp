@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/pinterest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollY="10dp"
+        android:verticalScrollbarPosition="defaultPosition"
+        android:background="@drawable/pinterest"
+        tools:context=".eachcasedetails">
+
+        <TextView
+            android:id="@+id/detid"
+            android:layout_width="137dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Detective id:"
+            app:layout_constraintBottom_toTopOf="@+id/detfirstname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.383"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/detfirstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:ems="10"
+            android:hint="First name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/detlastname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.82" />
+
+        <TextView
+            android:id="@+id/detlastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Last name:"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.432"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detfirstname" />
+
+        <TextView
+            android:id="@+id/detaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Address"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/detmobileno"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detlastname" />
+        <TextView
+            android:id="@+id/detmobileno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="Mobile No:"
+            android:inputType="phone"
+            app:layout_constraintBottom_toTopOf="@+id/detemail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.439"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detaddress" />
+        <TextView
+            android:id="@+id/detemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="Email:"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/detassigned"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.439"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detmobileno" />
+
+        <TextView
+            android:id="@+id/detassigned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="7dp"
+            android:ems="10"
+            android:hint="Assigned case:"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/detclosed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detemail"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/detclosed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="Closed cases:"
+            android:inputType="time"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.439"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detassigned" />
+
+
+        <TextView
+            android:id="@+id/deton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginStart="105dp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="190dp"
+            android:layout_marginRight="190dp"
+            android:hint="Cases handled:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.74"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detclosed"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
